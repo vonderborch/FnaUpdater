@@ -3,7 +3,7 @@
 using ICSharpCode.SharpZipLib.BZip2;
 using ICSharpCode.SharpZipLib.Tar;
 
-namespace FnaUpdater.Runners
+namespace FnaUpdater.Core.Runners
 {
     /// <summary>
     ///     A fna runner.

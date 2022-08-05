@@ -1,6 +1,6 @@
 ﻿using CommandLine;
 
-namespace FnaUpdater.Options
+namespace FnaUpdater.Core.Options
 {
     /// <summary>
     ///     An options.

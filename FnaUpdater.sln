@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FnaUpdater.Core", "FnaUpdater.Core\FnaUpdater.Core.csproj", "{9C0D9689-3B4C-4920-B2B9-2AF5B790FAFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{DAF28E52-6E74-4334-B567-A03EA4CADA7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAF28E52-6E74-4334-B567-A03EA4CADA7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAF28E52-6E74-4334-B567-A03EA4CADA7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C0D9689-3B4C-4920-B2B9-2AF5B790FAFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C0D9689-3B4C-4920-B2B9-2AF5B790FAFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C0D9689-3B4C-4920-B2B9-2AF5B790FAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C0D9689-3B4C-4920-B2B9-2AF5B790FAFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
