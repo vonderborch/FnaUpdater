@@ -1,7 +1,7 @@
-﻿using System.Diagnostics;
-
-using ICSharpCode.SharpZipLib.BZip2;
-using ICSharpCode.SharpZipLib.Tar;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace FnaUpdater.Core.Runners
 {
@@ -10,15 +10,19 @@ namespace FnaUpdater.Core.Runners
     /// </summary>
     public abstract class FnaRunner
     {
+        private readonly Func<string, string, Task> _zipDownload;
+
         /// <summary>
         ///     Specialized constructor for use only by derived class.
         /// </summary>
-        /// <param name="options">  Options for controlling the operation. </param>
-        protected FnaRunner(Options.Options options)
+        /// <param name="options">                      Options for controlling the operation. </param>
+        /// <param name="precompiledZipDownloadMethod"> The precompiled zip download method. </param>
+        protected FnaRunner(Options.Options options, Func<string, string, Task> precompiledZipDownloadMethod)
         {
             this.AsSubmodule = options.AsSubmodule;
             this.WorkingDirectory = options.WorkingDirectory;
             this.InstallDirectory = options.InstallDirectory;
+            this._zipDownload = precompiledZipDownloadMethod;
         }
 
         /// <summary>
@@ -92,36 +96,9 @@ namespace FnaUpdater.Core.Runners
         /// <returns>
         ///     A Task.
         /// </returns>
-        protected async Task DownloadCompiledLibs()
+        protected void DownloadCompiledLibs()
         {
-            if (Directory.Exists(this.CurrentPrecompiledFnaLibrariesExtractedDirectory))
-            {
-                Directory.Delete(this.CurrentPrecompiledFnaLibrariesExtractedDirectory, true);
-            }
-
-            if (File.Exists(this.CurrentPrecompiledFnaLibrariesLocalFile))
-            {
-                File.Delete(this.CurrentPrecompiledFnaLibrariesLocalFile);
-            }
-
-            var httpClient = new HttpClient();
-            using (var stream = await httpClient.GetStreamAsync(Constants.PrecompiledFnaLibraries))
-            {
-                using (var fileStream = new FileStream(this.CurrentPrecompiledFnaLibrariesLocalFile, FileMode.CreateNew))
-                {
-                    await stream.CopyToAsync(fileStream);
-                }
-            }
-
-            using (var inStream = File.OpenRead(this.CurrentPrecompiledFnaLibrariesLocalFile))
-            {
-                using (var zipStream = new BZip2InputStream(inStream))
-                {
-                    var tarArchive = TarArchive.CreateInputTarArchive(zipStream);
-                    tarArchive.ExtractContents(this.CurrentPrecompiledFnaLibrariesExtractedDirectory);
-                    tarArchive.Close();
-                }
-            }
+            this._zipDownload(this.CurrentPrecompiledFnaLibrariesExtractedDirectory, this.CurrentPrecompiledFnaLibrariesLocalFile).Wait();
         }
 
         /// <summary>

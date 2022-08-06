@@ -1,4 +1,7 @@
-﻿namespace FnaUpdater.Core.Runners
+﻿using System;
+using System.Threading.Tasks;
+
+namespace FnaUpdater.Core.Runners
 {
     /// <summary>
     ///     An install fna.
@@ -9,9 +12,10 @@
         /// <summary>
         ///     Constructor.
         /// </summary>
-        /// <param name="options">  Options for controlling the operation. </param>
-        public InstallFna(Options.Options options)
-            : base(options) { }
+        /// <param name="options">                      Options for controlling the operation. </param>
+        /// <param name="precompiledZipDownloadMethod"> The precompiled zip download method. </param>
+        public InstallFna(Options.Options options, Func<string, string, Task> precompiledZipDownloadMethod)
+            : base(options, precompiledZipDownloadMethod) { }
 
         /// <summary>
         ///     Gets the run.
@@ -43,7 +47,7 @@
 
             // Step 2 - Download Pre-compiled libraries
             WriteToConsole("Downloading pre-compiled libraries...");
-            DownloadCompiledLibs().Wait();
+            DownloadCompiledLibs();
             WriteToConsole("FNA is installed and up-to-date!");
 
             return string.Empty;
@@ -67,7 +71,7 @@
 
             // Step 2 - Download Pre-compiled libraries
             WriteToConsole("Downloading pre-compiled libraries...");
-            DownloadCompiledLibs().Wait();
+            DownloadCompiledLibs();
             WriteToConsole("FNA is installed and up-to-date!");
 
             return string.Empty;

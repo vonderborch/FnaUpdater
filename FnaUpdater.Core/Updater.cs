@@ -1,4 +1,7 @@
-﻿using CommandLine;
+﻿using System;
+using System.Threading.Tasks;
+
+using CommandLine;
 
 using FnaUpdater.Core.Options;
 using FnaUpdater.Core.Runners;
@@ -7,6 +10,13 @@ namespace FnaUpdater.Core
 {
     public class Updater
     {
+        private readonly Func<string, string, Task> _zipDownload;
+
+        public Updater(Func<string, string, Task> precompiledZipDownloadMethod)
+        {
+            this._zipDownload = precompiledZipDownloadMethod;
+        }
+
         public void ParseAndRun(string[] args)
         {
             var parseResults = Parser.Default.ParseArguments<InstallOptions, UpdateOptions>(args);
@@ -20,10 +30,10 @@ namespace FnaUpdater.Core
         /// <returns>
         ///     A string.
         /// </returns>
-        private static string InstallFNA(InstallOptions opts)
+        private string InstallFNA(InstallOptions opts)
         {
             //handle options
-            return new InstallFna(opts).Run();
+            return new InstallFna(opts, this._zipDownload).Run();
         }
 
         /// <summary>
@@ -33,10 +43,10 @@ namespace FnaUpdater.Core
         /// <returns>
         ///     A string.
         /// </returns>
-        private static string UpdateFNA(UpdateOptions opts)
+        private string UpdateFNA(UpdateOptions opts)
         {
             //handle options
-            return new UpdateFna(opts).Run();
+            return new UpdateFna(opts, this._zipDownload).Run();
         }
 
         /// <summary>
@@ -45,7 +55,7 @@ namespace FnaUpdater.Core
         /// <returns>
         ///     A string.
         /// </returns>
-        private static string MakeError()
+        private string MakeError()
         {
             return "\0";
         }
