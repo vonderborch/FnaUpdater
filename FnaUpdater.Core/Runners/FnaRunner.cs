@@ -31,7 +31,7 @@ namespace FnaUpdater.Core.Runners
         /// <value>
         ///     The pathname of the current directory.
         /// </value>
-        protected string CurrentDirectory => Path.Combine(Directory.GetCurrentDirectory(), this.WorkingDirectory);
+        protected string CurrentDirectory => Path.Combine(Directory.GetCurrentDirectory(), this.WorkingDirectory, Path.GetDirectoryName(this.InstallDirectory) ?? "");
 
         /// <summary>
         ///     Gets the current precompiled fna libraries local file.

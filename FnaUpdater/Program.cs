@@ -49,6 +49,8 @@ namespace FnaUpdater
                     tarArchive.Close();
                 }
             }
+
+            File.Delete(localFile);
         }
     }
 }
