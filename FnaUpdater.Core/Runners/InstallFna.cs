@@ -37,7 +37,7 @@ namespace FnaUpdater.Core.Runners
         /// </returns>
         public string RunAsSubmodule()
         {
-            var baseDir = this.CurrentDirectory;
+            var baseDir = this.BaseCurrentDirectory;
 
             // Step 1 - Download the Repo
             WriteToConsole("Adding FNA as a submodule...");

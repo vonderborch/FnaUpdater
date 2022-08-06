@@ -38,13 +38,12 @@ namespace FnaUpdater.Core.Runners
         /// </returns>
         public string RunAsSubmodule()
         {
-            var baseDir = this.CurrentDirectory;
+            var baseDir = this.BaseCurrentDirectory;
 
             // Step 1 - Download the Repo
             WriteToConsole("Updating FNA...");
             RunCommand("git submodule deinit -f FNA", baseDir);
             RunCommand($"git rm {this.InstallDirectory} -f", baseDir);
-            var path = Path.Combine(baseDir, ".git", "modules", "FNA");
             DeleteRecursive(Path.Combine(baseDir, ".git", "modules", "FNA"));
             RunCommand($"git submodule add {Constants.FnaRepo}.git {this.InstallDirectory}", baseDir);
 
