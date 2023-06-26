@@ -11,6 +11,7 @@ namespace FnaUpdater.Core
 		{
             if (options.AsSubmodule)
             {
+                throw new NotImplementedException();
                 ExecuteAsSubmodule(options, log);
             }
             else

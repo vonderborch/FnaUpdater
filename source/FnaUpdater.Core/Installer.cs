@@ -29,6 +29,7 @@ namespace FnaUpdater.Core
             // Update submodules
             log("Pulling submodules...");
             Cross.Commands.RunCommand(options.FnaRootInstallPath, "git submodule update --init --recursive");
+            Cross.Commands.RunCommand(options.FnaSourceInstallPath, "git submodule update --init --recursive");
             log("  Submodules installed!");
         }
 
