@@ -1,18 +1,25 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{18A25940-8D9B-4804-847D-C5E7D54E6D0B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{1C721673-B00B-4EA6-A923-223BC31502DA}"
 	ProjectSection(SolutionItems) = preProject
 		CODEOWNERS = CODEOWNERS
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FnaUpdater", "FnaUpdater\FnaUpdater.csproj", "{BFDF19A5-3552-4B2D-B750-8023F12952D0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{627821CA-F239-4ADC-A7D5-8F1626611921}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FnaUpdater.Core", "FnaUpdater.Core\FnaUpdater.Core.csproj", "{7B041C87-D9B7-4F14-96F1-44102DAA90BA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{62E12C12-E28B-4C34-A0A2-FD7FE7816944}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "automated", "automated", "{F20C85E9-B09E-4A6B-AC3C-B03497D7D8CF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FnaUpdater.Test", "test\automated\FnaUpdater.Test\FnaUpdater.Test.csproj", "{FD58B224-B8AE-4630-BA9F-9713EE8CE61D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FnaUpdater", "source\FnaUpdater\FnaUpdater.csproj", "{593BA577-91BB-4EF1-96D4-5088CDAA10ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FnaUpdater.Core", "source\FnaUpdater.Core\FnaUpdater.Core.csproj", "{BBF00AA5-D2FD-4298-A32E-9DE170B4566B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,19 +27,29 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BFDF19A5-3552-4B2D-B750-8023F12952D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFDF19A5-3552-4B2D-B750-8023F12952D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFDF19A5-3552-4B2D-B750-8023F12952D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFDF19A5-3552-4B2D-B750-8023F12952D0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B041C87-D9B7-4F14-96F1-44102DAA90BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B041C87-D9B7-4F14-96F1-44102DAA90BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B041C87-D9B7-4F14-96F1-44102DAA90BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B041C87-D9B7-4F14-96F1-44102DAA90BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD58B224-B8AE-4630-BA9F-9713EE8CE61D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD58B224-B8AE-4630-BA9F-9713EE8CE61D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD58B224-B8AE-4630-BA9F-9713EE8CE61D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD58B224-B8AE-4630-BA9F-9713EE8CE61D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{593BA577-91BB-4EF1-96D4-5088CDAA10ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{593BA577-91BB-4EF1-96D4-5088CDAA10ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{593BA577-91BB-4EF1-96D4-5088CDAA10ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{593BA577-91BB-4EF1-96D4-5088CDAA10ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBF00AA5-D2FD-4298-A32E-9DE170B4566B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBF00AA5-D2FD-4298-A32E-9DE170B4566B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBF00AA5-D2FD-4298-A32E-9DE170B4566B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBF00AA5-D2FD-4298-A32E-9DE170B4566B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F20C85E9-B09E-4A6B-AC3C-B03497D7D8CF} = {62E12C12-E28B-4C34-A0A2-FD7FE7816944}
+		{FD58B224-B8AE-4630-BA9F-9713EE8CE61D} = {F20C85E9-B09E-4A6B-AC3C-B03497D7D8CF}
+		{593BA577-91BB-4EF1-96D4-5088CDAA10ED} = {627821CA-F239-4ADC-A7D5-8F1626611921}
+		{BBF00AA5-D2FD-4298-A32E-9DE170B4566B} = {627821CA-F239-4ADC-A7D5-8F1626611921}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DC244D37-1AB9-4777-9FD7-8A79784CAC7C}
+		SolutionGuid = {GUID05}
 	EndGlobalSection
 EndGlobal
