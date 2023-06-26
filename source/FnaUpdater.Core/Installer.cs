@@ -10,10 +10,15 @@ namespace FnaUpdater.Core
 
         protected override void ExecuteAsSubmodule(Options options, Func<string, bool> log)
         {
-            // make sure we're in a git repo...
-            if (!InGitRepo(options.FnalibsInstallPath))
+            if (!Directory.Exists(options.FnaRootInstallPath))
             {
-                throw new ArgumentException($"Install path '{options.FnalibsInstallPath}' is not in a git repo!");
+                Directory.CreateDirectory(options.FnaRootInstallPath);
+            }
+
+            // make sure we're in a git repo...
+            if (!InGitRepo(options.FnaRootInstallPath))
+            {
+                throw new ArgumentException($"Install path '{options.FnaRootInstallPath}' is not in a git repo!");
             }
 
             // Clone repo
@@ -29,6 +34,11 @@ namespace FnaUpdater.Core
 
         protected override void ExecuteClone(Options options, Func<string, bool> log)
         {
+            if (!Directory.Exists(options.FnaRootInstallPath))
+            {
+                Directory.CreateDirectory(options.FnaRootInstallPath);
+            }
+
             // Clone repo
             log("Cloning FNA repo...");
             Cross.Commands.RunCommand(options.FnaRootInstallPath, $"git clone --recursive {Constants.FnaRepo} {options.FnaSourceInstallPath}");
