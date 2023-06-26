@@ -12,6 +12,7 @@ class Program
     /// <param name="args">Command line arguments</param>
     static void Main(string[] args)
     {
+        /*
         //args = new string[] { "install", "/Users/christianwebber/Dropbox/Projects/temp", "FNA" };
         args = new string[] { "install", @"C:\Users\ricky\Dropbox\Projects\temp\test", "FNA" };
         var path = Path.Combine(args[1], args[2]);
@@ -20,6 +21,7 @@ class Program
             Directory.Delete(path, true);
             Directory.CreateDirectory(args[1]);
         }
+        */
 
         // parse command line arguments and execute the appropriate command
         var parseResults = Parser.Default.ParseArguments<InstallOptions, UpdateOptions>(args);
